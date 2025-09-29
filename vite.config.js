@@ -1,5 +1,11 @@
-export default {
+import { defineConfig } from 'vite';
+
+export default defineConfig({
   server: {
-    open: true,  // auto-open browser
+    open: true,
+  },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
   }
-};
+});
