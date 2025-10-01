@@ -13,6 +13,11 @@ export default class MainScene extends Phaser.Scene {
 this.countryDefs = [
   { key: 'brazil', name: 'Brazil', imageUrl: 'https://flagcdn.com/64x48/br.png', color: 0x1f8b4c, rarity: 'common', cost: 25, income: 3 },
   { key: 'india', name: 'India', imageUrl: 'https://flagcdn.com/64x48/in.png', color: 0xff9933, rarity: 'common', cost: 500, income: 20 },
+  { key: 'ukraine', name: 'Ukraine', imageUrl: 'https://flagcdn.com/64x48/ua.png', color: 0x0057b7, rarity: 'common', cost: 300, income: 15 },
+  { key: 'libya', name: 'Libya', imageUrl: 'https://flagcdn.com/64x48/ly.png', color: 0x000000, rarity: 'common', cost: 400, income: 18 },
+  { key: 'lithuania', name: 'Lithuania', imageUrl: 'https://flagcdn.com/64x48/lt.png', color: 0xffd700, rarity: 'common', cost: 350, income: 14 },
+  { key: 'latvia', name: 'Latvia', imageUrl: 'https://flagcdn.com/64x48/lv.png', color: 0x9e3039, rarity: 'common', cost: 375, income: 16 },
+  { key: 'estonia', name: 'Estonia', imageUrl: 'https://flagcdn.com/64x48/ee.png', color: 0x000000, rarity: 'common', cost: 320, income: 15 },
   { key: 'china', name: 'China', imageUrl: 'https://flagcdn.com/64x48/cn.png', color: 0xff0000, rarity: 'uncommon', cost: 3000, income: 120 },
   { key: 'usa', name: 'United_States', imageUrl: 'https://flagcdn.com/64x48/us.png', color: 0x2b6cff, rarity: 'legendary', cost: 600000, income: 25000 },
   { key: 'france', name: 'France', imageUrl: 'https://flagcdn.com/64x48/fr.png', color: 0x2b2b8f, rarity: 'epic', cost: 150000, income: 8500 },
@@ -43,7 +48,11 @@ this.countryDefs = [
   { key: 'nigeria', name: 'Nigeria', imageUrl: 'https://flagcdn.com/64x48/ng.png', color: 0x008000, rarity: 'common', cost: 250, income: 12 },
   { key: 'kenya', name: 'Kenya', imageUrl: 'https://flagcdn.com/64x48/ke.png', color: 0xff0000, rarity: 'common', cost: 350, income: 14 },
   { key: 'vatican_city', name: 'Vatican_City', imageUrl: 'https://flagcdn.com/64x48/va.png', color: 0xffff00, rarity: 'mythic', cost: 12000000, income: 60000 },
+  { key: 'yugoslavia', name: 'Yugoslavia', imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Flag_of_Yugoslavia_%281946-1992%29.svg/640px-Flag_of_Yugoslavia_%281946-1992%29.svg.png', color: 0x0000ff, rarity: 'mythic', cost: 15000000, income: 75000 },
+  { key: 'roman_empire', name: 'Roman Empire', imageUrl: 'https://www.bing.com/th/id/OIP.umJWNd8sEreaShE6ShN1YwHaEc?w=245&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2', color: 0xffd700, rarity: 'godly', cost: 40000000, income: 200000 },
   { key: 'majapahit', name: 'Majapahit Empire', imageUrl: 'https://tse3.mm.bing.net/th/id/OIP.5cIFvUCZ8O1RJvRDo4tGQQHaEY?rs=1&pid=ImgDetMain&o=7&rm=3', color: 0xffd700, rarity: 'godly', cost: 60000000, income: 300000 },
+  { key: 'polish_lithuanian_commonwealth', name: 'Polish-Lithuanian Commonwealth', imageUrl: 'https://th.bing.com/th/id/ODL.14c50bb7c1ff5ac815c0fcc7c1571cfb?w=139&h=99&c=10&rs=1&o=6&pid=AlgoBlockDebug', color: 0xff0000, rarity: 'godly', cost: 80000000, income: 400000 },
+  { key: 'warsaw_pact', name: 'Warsaw Pact', imageUrl: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3bb7c747-20e6-412c-bd48-7d02131c61ab/deaa73j-10a62727-e6ef-4d74-adb2-f3c942fac884.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNiYjdjNzQ3LTIwZTYtNDEyYy1iZDQ4LTdkMDIxMzFjNjFhYlwvZGVhYTczai0xMGE2MjcyNy1lNmVmLTRkNzQtYWRiMi1mM2M5NDJmYWM4ODQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8hLUSE5F8FfOg-JXyr8UtfPp5xc6BPnRnb2wzLGIDrM', color: 0x0000ff, rarity: 'secret', cost: 500000000, income: 25000000 },
   { key: 'tee_mobil', name: 'Tee_Mobil University', imageUrl: 'https://ibb.co/F4z7G0ND', color: 0x000000, rarity: 'tee_mobil', cost: 10000000000, income: 1000000000 },
 ];
 
@@ -55,7 +64,7 @@ this.countryDefs = [
     // mythic low, godly & secret extremely rare
     this.rarityOrder = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'mythic', 'godly', 'secret', 'tee_mobil'];
     this.rarityWeights = {
-      common: 50,
+      common: 50.0,
       uncommon: 30,
       rare: 13,
       epic: 4,
@@ -474,28 +483,30 @@ this.countryDefs = [
     // make interactive area (use the flag as hit area)
     flag.setInteractive();
     const onClick = () => {
-      const def = container.countryDef;
-      if (typeof window !== 'undefined') {
-        if ((window.money || 0) >= def.cost) {
-          window.money = (window.money || 0) - def.cost;
-          window[def.key] = (window[def.key] || 0) + 1;
-          window.gameCounters[def.key] = (window.gameCounters[def.key] || 0) + 1;
-          // apply rebirth multiplier to purchased income
-          const mult = (window.rebirthMultiplier || 1);
-          window.incomePerSecond = (window.incomePerSecond || 0) + (def.income * mult);
-          if (this.moneyText) this.moneyText.setText(`$${Math.floor(window.money)}`);
-          if (this.menuPanel.visible) this.refreshMenuCounts();
-        } else {
-          if (this.moneyText) {
-            this.moneyText.setStyle({ color: '#ff3333' });
-            this.time.delayedCall(300, () => this.moneyText.setStyle({ color: '#ffffff' }), [], this);
-          }
-        }
-      }
-      // destroy container
+  const def = container.countryDef;
+  if (typeof window !== 'undefined') {
+    if ((window.money || 0) >= def.cost) {
+      window.money = (window.money || 0) - def.cost;
+      window[def.key] = (window[def.key] || 0) + 1;
+      window.gameCounters[def.key] = (window.gameCounters[def.key] || 0) + 1;
+      // apply rebirth multiplier to purchased income
+      const mult = (window.rebirthMultiplier || 1);
+      window.incomePerSecond = (window.incomePerSecond || 0) + (def.income * mult);
+      if (this.moneyText) this.moneyText.setText(`$${Math.floor(window.money)}`);
+      if (this.menuPanel.visible) this.refreshMenuCounts();
+      // only destroy if you successfully bought it
       flag.off('pointerdown', onClick);
       container.destroy();
-    };
+    } else {
+      if (this.moneyText) {
+        this.moneyText.setStyle({ color: '#ff3333' });
+        this.time.delayedCall(300, () => this.moneyText.setStyle({ color: '#ffffff' }), [], this);
+      }
+      // do NOT destroy container if you can't afford
+    }
+  }
+};
+
     flag.on('pointerdown', onClick, this);
 
     // add container to group; move it each frame by adding a simple custom update on the container
