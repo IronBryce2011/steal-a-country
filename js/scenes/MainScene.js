@@ -360,7 +360,7 @@ this.countryDefs = [
               this.menuContent.add(t);
               this.menuTexts[e.key] = t;
               // clicking the menu line will attempt to buy one of the country (if affordable)
-              t.on('pointerdown', () => {
+              /* t.on('pointerdown', () => {
                 const def = e.def;
                 if ((window.money || 0) >= def.cost) {
                   window.money = (window.money || 0) - def.cost;
@@ -375,7 +375,7 @@ this.countryDefs = [
                     this.moneyText.setStyle({ color: '#ff3333' });
                     this.time.delayedCall(300, () => this.moneyText.setStyle({ color: '#ffffff' }), [], this);
                   }
-                }
+                } */
               });
             }
             row += 1;
