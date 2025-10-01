@@ -375,8 +375,8 @@ this.countryDefs = [
                     this.moneyText.setStyle({ color: '#ff3333' });
                     this.time.delayedCall(300, () => this.moneyText.setStyle({ color: '#ffffff' }), [], this);
                   }
-                } 
-              });*/
+                } */
+              });
             }
             row += 1;
           }
@@ -534,5 +534,56 @@ this.countryDefs = [
         g.destroy();
       }
     });
+    // --- SAVE / LOAD FUNCTIONS ---
+
+// Save current game state to localStorage
+saveGame() {
+  if (typeof window === 'undefined') return;
+  const saveData = {
+    money: window.money || 0,
+    incomePerSecond: window.incomePerSecond || 0,
+    rebirthCount: window.rebirthCount || 0,
+    rebirthMultiplier: window.rebirthMultiplier || 1,
+    gameCounters: window.gameCounters || {},
+  };
+  try {
+    localStorage.setItem('fallerGameSave', JSON.stringify(saveData));
+    console.log('Game saved!');
+  } catch (e) {
+    console.error('Failed to save game:', e);
+  }
+}
+
+// Load game state from localStorage
+loadGame() {
+  if (typeof window === 'undefined') return;
+  try {
+    const saved = localStorage.getItem('fallerGameSave');
+    if (saved) {
+      const data = JSON.parse(saved);
+      window.money = data.money || 0;
+      window.incomePerSecond = data.incomePerSecond || 0;
+      window.rebirthCount = data.rebirthCount || 0;
+      window.rebirthMultiplier = data.rebirthMultiplier || 1;
+      window.gameCounters = data.gameCounters || {};
+      // restore individual country counters too
+      this.countryDefs.forEach(def => {
+        window[def.key] = window.gameCounters[def.key] || 0;
+      });
+      // refresh UI
+      if (this.moneyText) this.moneyText.setText(`$${Math.floor(window.money)}`);
+      if (this.menuPanel && this.menuPanel.visible) this.refreshMenuCounts();
+      if (this.rebirthText) this.rebirthText.setText(`Rebirths: ${window.rebirthCount} | Next: $${this.getNextRebirthCost()} | x${window.rebirthMultiplier}`);
+      console.log('Game loaded!');
+    }
+  } catch (e) {
+    console.error('Failed to load game:', e);
+  }
+}
+this.time.addEvent({
+  delay: 10000, // 10 seconds
+  callback: () => this.saveGame(),
+  loop: true
+});
   }
 } 
