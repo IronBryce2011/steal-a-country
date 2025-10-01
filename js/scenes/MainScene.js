@@ -375,8 +375,8 @@ this.countryDefs = [
                     this.moneyText.setStyle({ color: '#ff3333' });
                     this.time.delayedCall(300, () => this.moneyText.setStyle({ color: '#ffffff' }), [], this);
                   }
-                } */
-              });
+                } 
+              });*/
             }
             row += 1;
           }
