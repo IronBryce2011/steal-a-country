@@ -535,7 +535,7 @@ this.countryDefs = [
       }
     });
     // --- SAVE / LOAD FUNCTIONS ---
-
+}
 // Save current game state to localStorage
 saveGame() {
   if (typeof window === 'undefined') return;
